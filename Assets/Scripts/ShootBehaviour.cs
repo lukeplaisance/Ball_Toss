@@ -24,12 +24,7 @@ public class ShootBehaviour : MonoBehaviour
     public void Shoot()
     {
         var fot = shoot_force * Time.deltaTime; //force over time
-        rigidbody.AddForce(new Vector3(direction.x, direction.y, direction.z) * fot);
-    }
-
-    public void ControlTrajectory()
-    {
-
+        rigidbody.AddForce(new Vector3(direction.x, direction.y, direction.z), ForceMode.Impulse);
     }
 
     void Update()
