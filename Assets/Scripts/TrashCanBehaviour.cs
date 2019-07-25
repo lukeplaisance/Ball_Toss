@@ -11,6 +11,7 @@ public class TrashCanBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            other.GetComponent<ConstantForce>().enabled = false;
             after_goal_response.Invoke();
         }
     }
