@@ -23,17 +23,26 @@ public class ShootBehaviour : MonoBehaviour
 
     public void Shoot()
     {
-        var fot = shoot_force * Time.deltaTime; //force over time
-        rigidbody.AddForce(new Vector3(direction.x, direction.y, direction.z), ForceMode.Impulse);
+
+
+        if (Input.touchCount > 0)
+        {
+            //gets first touch since count is greater than 0
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Vector3 touch_pos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
+
+                rigidbody.AddForce(new Vector3(touch_pos.x, touch_pos.y, 8), ForceMode.Impulse);
+            }
+        }
     }
 
     void Update()
     {
         velocity = rigidbody.velocity;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();
-        }
+        Shoot();
     }
 }
 
