@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Security.Policy;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class ShootBehaviour : MonoBehaviour
 {
@@ -44,27 +41,4 @@ public class ShootBehaviour : MonoBehaviour
         velocity = rigidbody.velocity;
         Shoot();
     }
-}
-
-#if UNITY_EDITOR
-
-[CustomEditor(typeof(ShootBehaviour))]
-public class ShootBehaviourEditor : Editor
-{
-    private ShootBehaviour sb;
-
-    private void OnEnable()
-    {
-        sb = target as ShootBehaviour;
-    }
-
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        if (GUILayout.Button("Shoot"))
-        {
-            sb.Shoot();
-        }
-    }
-#endif
 }
