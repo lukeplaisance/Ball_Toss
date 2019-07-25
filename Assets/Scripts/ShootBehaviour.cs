@@ -31,7 +31,7 @@ public class ShootBehaviour : MonoBehaviour
             {
                 Vector3 touch_pos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));
 
-                rigidbody.AddForce(new Vector3(touch_pos.x, touch_pos.y, 8), ForceMode.Impulse);
+                rigidbody.AddForce(new Vector3(touch_pos.x, touch_pos.y, 1), ForceMode.Impulse);
             }
         }
     }
@@ -40,5 +40,10 @@ public class ShootBehaviour : MonoBehaviour
     {
         velocity = rigidbody.velocity;
         Shoot();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidbody.AddForce(new Vector3(direction.x, direction.y, direction.z), ForceMode.Impulse);
+        }
     }
 }
