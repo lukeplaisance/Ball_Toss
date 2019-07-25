@@ -30,6 +30,10 @@ public class ShootBehaviour : MonoBehaviour
     void Update()
     {
         velocity = rigidbody.velocity;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
 }
 
